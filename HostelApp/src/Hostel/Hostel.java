@@ -5,6 +5,8 @@
  */
 package Hostel;
 
+import Exceptions.CustomerNotFoundException;
+import Exceptions.RoomNotFoundException;
 import java.util.Set;
 
 /**
@@ -45,15 +47,15 @@ public final class Hostel {
     }
     
     public Room searchRoomByNumber(int number) throws RoomNotFoundException{
-        
+        return null;
     }
     
     public Customer searchCustomerByName(String name, String lastName) throws CustomerNotFoundException{
-        
+        return null;
     }
     
     public Customer searchReservationByCustomerName(String name, String lastName) throws CustomerNotFoundException{
-        
+        return null;
     }
     
     public Set<Reservation> searchReservations(String name, String lastName){
