@@ -28,10 +28,15 @@ public class Customer {
     }
     
     public Customer(String title, String name, String lastName, String birthday){
+        this(title, name, lastName, birthday, null);
+    }
+    
+    public Customer(String title, String name, String lastName, String birthday, String email){
         this.title = title;
         this.firstName = name;
         this.lastName = lastName;
         this.birthday = LocalDate.parse(birthday);
+        this.email = email;
     }
     
     @Override
