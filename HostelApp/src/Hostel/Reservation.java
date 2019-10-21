@@ -3,9 +3,9 @@ package Hostel;
 public class Reservation {
 	private String reservationCode;
 	private int numberOfGuests;
-        private LocalDate reservationDate;
-        private LocalDate checkinDate;
-        private LocalDate checkoutDate;
+//        private LocalDate reservationDate;
+//        private LocalDate checkinDate;
+//        private LocalDate checkoutDate;
 
         //RELATIONS TO OTHER CLASSES
         private Room reservedRooms[];
@@ -19,7 +19,8 @@ public class Reservation {
 	}
 	
 	double calculateTotalAmount() {
-		return reservationPayment.calculateTotalAmount();
+		//return reservationPayment.calculateTotalAmount();
+                return 0;
 	}
 	
 }
