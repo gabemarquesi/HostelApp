@@ -7,7 +7,12 @@ package Hostel;
 
 import Exceptions.CustomerNotFoundException;
 import Exceptions.RoomNotFoundException;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
+import java.util.HashSet;
+
+import java.time.LocalDate;
 
 /**
  *
@@ -18,18 +23,34 @@ public final class Hostel {
     private String name;
     private String phone;
     
+        private Map<String, Customer> customersNameIndex;
+    private Set<Customer> customers;
+    
     private Hostel(){
-        
+        customersNameIndex=new HashMap<String,Customer>();
+        customers=new HashSet<Customer>();
     }
     
     public static Hostel getHostel(){
         return instance;
     }
     
-    public boolean createCustomer(String title, String lastName, String dateOfBirth, String address, String zipCode, String city, String state, String country, String email){
+    public boolean createCustomer(String title, String name, String lastName, String dateOfBirth, String address, String zipCode, String city, String state, String country, String email){
+        Customer cInsert=new Customer(null, name, lastName, dateOfBirth, email);
+        Address aInsert=new Address(address, zipCode, city, state, country);
+        customersNameIndex.put(lastName+", "+name, cInsert);
+        customers.add(cInsert);
         return true;
+    } 
+    //enumerations for checking problems with entered customer data, if any
+    public enum customerDataStatus{
+        CORRECT, MISSING_MANDATORY_FIELD, NAME_UNDER_THREE_CHARS, INVALID_NAME, INVALID_TITLE
     }
-    
+    public customerDataStatus[] checkCustomerdata(Customer checkedCustomer){
+        //TODO: CHECK INTEGRITY (e.g. all fields filled, valid title, valid name, etc)
+        customerDataStatus[] status={customerDataStatus.CORRECT};//PLACEHOLDER
+        return status;
+    }
     public boolean makeReservation(Customer customer, String rsDate, String checkin, String checkout){
         return true;
     }
@@ -51,7 +72,10 @@ public final class Hostel {
     }
     
     public Customer searchCustomerByName(String name, String lastName) throws CustomerNotFoundException{
-        return null;
+      if(!(customersNameIndex.containsKey(lastName+", "+name))){
+            throw new CustomerNotFoundException(name,lastName,"not on index");
+        }
+        return customersNameIndex.get(lastName+", "+name);
     }
     
     public Customer searchReservationByCustomerName(String name, String lastName) throws CustomerNotFoundException{

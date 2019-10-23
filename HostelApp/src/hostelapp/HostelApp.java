@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 package hostelapp;
-
+import Hostel.*;
+import Exceptions.*;
 /**
  *
  * @author 2019.1.08.041
  */
 public class HostelApp {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+   public static void main(String args[]){
+       
+   }
 }
