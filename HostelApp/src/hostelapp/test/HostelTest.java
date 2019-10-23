@@ -31,6 +31,7 @@ public class HostelTest{
     public static void main(String[] args) {
         
         //testing CreateCustomer and associated functionality
+        System.out.println("NOW TESTING: createCustomer(), searchCustomerByName()");
     if(!(addCustomerTest())){
         System.out.println("failure on hostel.CreateCustomer:customer not on name index");
     }
